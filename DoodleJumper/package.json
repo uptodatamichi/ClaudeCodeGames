@@ -1,0 +1,55 @@
+{
+  "name": ".",
+  "version": "0.0.0+FE",
+  "description": "",
+  "author": "",
+  "license": "",
+  "keywords": [
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "entrypoint": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "browser": "./dist/index.bundle.js",
+      "import": "./dist/index.js"
+    },
+    "./spa": {
+      "entrypoint": "./src/spa.ts",
+      "types": "./dist/spa.d.ts",
+      "browser": "./dist/spa.bundle.js",
+      "import": "./dist/spa.js"
+    }
+  },
+  "imports": {
+    "#src/*.js": "./src/*.ts"
+  },
+  "files": [
+    "dist",
+    "CHANGELOG.md",
+    "buildinfo.txt",
+    "assets"
+  ],
+  "scripts": {
+    "clean:dist": "rm -rf dist/",
+    "clean:tsbuildinfo": "rm -f tsconfig.build.tsbuildinfo",
+    "clean": "bun run clean:dist && bun run clean:tsbuildinfo",
+    "prebuild": "bun run scripts/buildinfo.ts",
+    "tests": "bun test",
+    "build": "bun run build:lib && bun run build:lib-bundle",
+    "build:lib": "tsc --project tsconfig.build.json",
+    "build:lib-bundle": "bun run scripts/build-lib-bundle.ts",
+    "typecheck": "tsc --noEmit",
+    "dev": "bun run --watch src/dev.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^6.0.2",
+    "hono": "^4.12.5"
+  }
+}

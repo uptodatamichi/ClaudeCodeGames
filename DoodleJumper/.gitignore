@@ -1,0 +1,7 @@
+dist
+node_modules
+buildinfo.txt
+*.tsbuildinfo
+buildinfo-template.txt
+CHANGELOG-template.md
+README-template.md
