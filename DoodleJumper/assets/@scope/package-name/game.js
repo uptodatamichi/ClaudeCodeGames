@@ -185,7 +185,7 @@
 
         player = {
             x:   canvas.width / 2 - PLAYER_W / 2,
-            worldY: startWorldY - PLAYER_H,
+            worldY: startWorldY - canvas.height / 3 - PLAYER_H,
             vx: 0,
             vy: 0,
         };
@@ -204,7 +204,7 @@
         generateAbove(startPlatY - canvas.height * 3);
 
         // Camera: player sits at ~70% from top
-        cameraY = player.worldY - canvas.height * 0.65;
+        cameraY = player.worldY - canvas.height * 0.5;
     }
 
     restartGame();
